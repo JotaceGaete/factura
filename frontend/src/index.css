@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: #0f1117;
+    --bg-card: #161b27;
+    --bg-hover: #1e2535;
+    --border: #252d3d;
+    --text: #e2e8f0;
+    --text-muted: #64748b;
+    --accent: #0ea5e9;
+    --accent-dim: #0369a1;
+    --success: #22c55e;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+  }
+
+  * {
+    border-color: var(--border);
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+}
+
+@layer components {
+  .card {
+    @apply bg-[var(--bg-card)] border border-[var(--border)] rounded-xl;
+  }
+  .btn-primary {
+    @apply bg-[var(--accent)] hover:bg-[var(--accent-dim)] text-white font-medium px-4 py-2 rounded-lg transition-colors text-sm;
+  }
+  .btn-ghost {
+    @apply hover:bg-[var(--bg-hover)] text-[var(--text-muted)] hover:text-[var(--text)] font-medium px-4 py-2 rounded-lg transition-colors text-sm;
+  }
+  .btn-danger {
+    @apply bg-red-500/10 hover:bg-red-500/20 text-red-400 font-medium px-4 py-2 rounded-lg transition-colors text-sm border border-red-500/20;
+  }
+  .input {
+    @apply bg-[var(--bg)] border border-[var(--border)] rounded-lg px-3 py-2 text-sm text-[var(--text)] placeholder-[var(--text-muted)] focus:outline-none focus:border-[var(--accent)] transition-colors w-full;
+  }
+  .label {
+    @apply text-xs font-medium text-[var(--text-muted)] uppercase tracking-wide mb-1 block;
+  }
+  .table-row {
+    @apply border-b border-[var(--border)] hover:bg-[var(--bg-hover)] transition-colors;
+  }
+  .badge {
+    @apply inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium;
+  }
+  .badge-green { @apply badge bg-green-500/10 text-green-400 border border-green-500/20; }
+  .badge-yellow { @apply badge bg-yellow-500/10 text-yellow-400 border border-yellow-500/20; }
+  .badge-red { @apply badge bg-red-500/10 text-red-400 border border-red-500/20; }
+  .badge-blue { @apply badge bg-blue-500/10 text-blue-400 border border-blue-500/20; }
+  .badge-gray { @apply badge bg-gray-500/10 text-gray-400 border border-gray-500/20; }
+}
