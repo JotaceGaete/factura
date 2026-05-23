@@ -12,7 +12,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
       - ./backend/src/db/migrate.sql:/docker-entrypoint-initdb.d/01-schema.sql
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-facturaapp}"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-facturaapp} -d ${POSTGRES_DB:-facturaapp}"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -44,7 +44,7 @@ services:
     container_name: facturaapp-frontend
     restart: unless-stopped
     environment:
-      SERVICE_FQDN_FRONTEND: "factura.jotace.uk"
+      SERVICE_FQDN_FRONTEND: "https://factura.jotace.uk"
     depends_on:
       - backend
     expose:
