@@ -43,6 +43,8 @@ services:
         VITE_API_URL: /api
     container_name: facturaapp-frontend
     restart: unless-stopped
+    environment:
+      SERVICE_FQDN_FRONTEND: "factura.jotace.uk"
     depends_on:
       - backend
     expose:
